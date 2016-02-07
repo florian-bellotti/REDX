@@ -33,7 +33,11 @@ namespace Donnee
         //fonction pour requetes d'actions
         public void ActionRows(string SQLRequest)
         {
-
+            this.data = new DataSet();
+            this.SQLRequest = SQLRequest;
+            this.command = new SqlCommand(this.SQLRequest, this.connection);
+            this.dataAdaptater = new SqlDataAdapter(this.command);
+            this.dataAdaptater.Fill(this.data, "rows");
         }
 
         //fonction pour requetes de récupération de données

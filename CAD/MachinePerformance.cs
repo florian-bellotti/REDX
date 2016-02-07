@@ -33,7 +33,7 @@ namespace Donnee
 
             //Calculate calcule = new Calculate();
 
-            while (count <= 30)
+            while (count <= 15)
             {
                 //On récupère les info et on les met dans des listes
                 machineInfo.listInfoDisk.Add(counterDisk.NextValue());
