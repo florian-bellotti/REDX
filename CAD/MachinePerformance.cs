@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication5
+namespace Donnee
 {
-    class MachinePerformance
+    public class MachinePerformance
     {
         public MachineInformation machineInfo;
 
@@ -31,7 +31,7 @@ namespace ConsoleApplication5
             PerformanceCounter counterCPU = new PerformanceCounter("Processor", @"% Processor Time", @"_Total");   //85%
             PerformanceCounter counterRAM = new PerformanceCounter("Memory", "Available MBytes");                  //moins de 50MB
 
-            Calculate calcule = new Calculate();
+            //Calculate calcule = new Calculate();
 
             while (count <= 30)
             {
@@ -40,17 +40,9 @@ namespace ConsoleApplication5
                 machineInfo.listInfoCPU.Add(counterCPU.NextValue());
                 machineInfo.listInfoRAM.Add(counterRAM.NextValue());
 
-                //on calcule la moyenne de chaque liste
-                machineInfo.infoCPU = calcule.calculMoyenne(machineInfo.listInfoCPU);
-                machineInfo.infoRAM = calcule.calculMoyenne(machineInfo.listInfoRAM);
-                machineInfo.infoDisk = calcule.calculMoyenne(machineInfo.listInfoDisk);
-
-                Console.WriteLine(count);
                 count++;
                 Thread.Sleep(1000);
             }
-
-            Console.WriteLine("Disk : " + machineInfo.infoDisk + @" %; CPU : " + machineInfo.infoCPU + @" %; RAM : " + machineInfo.infoRAM + " MB");
 
             return machineInfo;
         }
