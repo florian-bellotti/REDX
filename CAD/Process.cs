@@ -1,14 +1,13 @@
-﻿using Donnee;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAD
+namespace Donnee
 {
-    class Process
+    public class Process
     {
         private DataSet ods;
         private MappageMachineInformation map;
@@ -23,7 +22,7 @@ namespace CAD
             this.rq_sql = "";
         }
 
-        public DataSet afficher(String tableName)
+        public DataSet afficher()
         {
             this.ods.Clear();
             rq_sql = map.selectAll();

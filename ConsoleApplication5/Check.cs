@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Donnee;
+using System.Data;
 
-namespace ConsoleApplication5
+namespace Metier
 {
     class Check : Observable
     {
-        //private Donnee proc;
+        private Process proc;
         private List<Observer> listeDesObservers;
         private int cpu;
         public int Cpu
@@ -34,7 +36,14 @@ namespace ConsoleApplication5
                 return this.disque;
             }
         }
-
+        public Check()
+        {
+            this.proc = new Process();
+            this.listeDesObservers = new List<Observer>();
+            this.cpu = 0;
+            this.ram = 0;
+            this.disque = 0;
+        }
         public void ajouterObs(Observer o)
         {
             if(!this.listeDesObservers.Contains(o))
@@ -48,7 +57,7 @@ namespace ConsoleApplication5
         }
         public void notifierObs()
         {
-
+            DataSet data = this.proc.afficher();
             foreach(Observer obs in this.listeDesObservers )
             {
                 obs.actualiser(this);
