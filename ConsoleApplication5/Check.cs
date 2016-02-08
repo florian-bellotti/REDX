@@ -8,6 +8,7 @@ namespace ConsoleApplication5
 {
     class Check : Observable
     {
+        //private Donnee proc;
         private List<Observer> listeDesObservers;
         private int cpu;
         public int Cpu
@@ -47,6 +48,7 @@ namespace ConsoleApplication5
         }
         public void notifierObs()
         {
+
             foreach(Observer obs in this.listeDesObservers )
             {
                 obs.actualiser(this);

@@ -13,5 +13,10 @@ namespace Donnee
             DateTime Date = DateTime.Now;
             return "INSERT INTO MachineInformation([CPU], [RAM], [Disk], [Date], [Id_Machine]) VALUES('" +  CPU + "', '" + RAM + "', '" + Disk + "', '" + Date + "', '1'); ";
         }
+
+        public string selectAll()
+        {
+            return "SELECT CPU, RAM, Disk from MachineInformation ORDER BY Date Desc LIMIT 1";
+        }
     }
 }
