@@ -10,7 +10,6 @@ namespace Donnee
     {
         public string insert(string CPU, string RAM, string Disk)
         {
-            //test commit
             DateTime Date = DateTime.Now;
             return "INSERT INTO MachineInformation([CPU], [RAM], [Disk], [Date], [Id_Machine]) VALUES('" +  CPU + "', '" + RAM + "', '" + Disk + "', '" + Date + "', '1'); ";
         }
