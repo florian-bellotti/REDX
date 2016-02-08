@@ -39,6 +39,19 @@ namespace Donnee
             this.dataAdaptater = new SqlDataAdapter(this.command);
             this.dataAdaptater.Fill(this.data, "rows");
         }
+
+        //fonction pour requetes de récupération de données
+        public DataSet getRows(string SQLRequest)
+        {
+            this.data.Clear();
+            this.SQLRequest = SQLRequest;
+            this.command = new SqlCommand(this.SQLRequest, this.connection);
+            this.connection.Open();
+            this.dataAdaptater = new SqlDataAdapter(this.command);
+            this.dataAdaptater.Fill(this.data, "rows");
+            connection.Close();
+            return this.data;
+        }
     }
 }
 
