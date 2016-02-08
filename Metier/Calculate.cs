@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metier
 {
-    class Calculate
+    public class Calculate
     {
         public double calculMoyenne(List<double> list)
         {
