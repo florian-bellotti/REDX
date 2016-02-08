@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{550E6901-F5A4-4E22-A435-87FB1543BE69}</ProjectGuid>
+    <ProjectGuid>{2E23547A-BA07-4D23-A171-DAB7E9FA46AE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication5</RootNamespace>
-    <AssemblyName>ConsoleApplication5</AssemblyName>
+    <RootNamespace>GestionInformation</RootNamespace>
+    <AssemblyName>GestionInformation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,22 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculate.cs" />
-    <Compile Include="Check.cs" />
-    <Compile Include="Observable.cs" />
-    <Compile Include="Observer.cs" />
-    <Compile Include="ObserverCPU.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CAD\Donnee.csproj">
-      <Project>{b5762da9-bec0-4454-baec-51af812e7996}</Project>
-      <Name>Donnee</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
