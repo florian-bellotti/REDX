@@ -178,6 +178,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxCPU;
+
+        private void SetTextBoxCPU(string text) { this.textBoxCPU.Text = text; }
+        private void SetTextBoxRAM(string text) { this.textBoxRAM.Text = text; }
+        private void SetTextBoxDisk(string text) { this.textBoxDisk.Text = text; }
+
+        delegate void SetTextBoxCPUCallback(string text);
+        delegate void SetTextBoxRAMCallback(string text);
+        delegate void SetTextBoxDiskCallback(string text);
     }
 }
 
