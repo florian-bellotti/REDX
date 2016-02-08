@@ -35,7 +35,7 @@ namespace Metier
         {
             machinePerf = new MachinePerformance();
 
-            while (count <= 15)
+            while (count <= 30)
             {
                 machineInfo = machinePerf.getMachineInformation();
                 
