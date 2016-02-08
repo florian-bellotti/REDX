@@ -11,8 +11,5 @@ namespace Donnee
         public double infoDisk;
         public double infoRAM;
         public double infoCPU;
-        public List<double> listInfoDisk;
-        public List<double> listInfoRAM;
-        public List<double> listInfoCPU;
     }
 }

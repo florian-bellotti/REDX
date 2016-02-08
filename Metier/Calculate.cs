@@ -11,7 +11,7 @@ namespace Metier
         public double calculMoyenne(List<double> list)
         {
             double total = 0;
-            
+
             for (int i = 0; i < list.Count; i++)
             {
                 total += list[i];

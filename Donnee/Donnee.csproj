@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B5762DA9-BEC0-4454-BAEC-51AF812E7996}</ProjectGuid>
+    <ProjectGuid>{7981E3E5-59FF-412B-AA67-CBC31D7AD547}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAD</RootNamespace>
-    <AssemblyName>CAD</AssemblyName>
+    <RootNamespace>Donnee</RootNamespace>
+    <AssemblyName>Donnee</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,6 @@
     <Compile Include="CADClass.cs" />
     <Compile Include="MachineInformation.cs" />
     <Compile Include="MachinePerformance.cs" />
-    <Compile Include="MappageMachineInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
