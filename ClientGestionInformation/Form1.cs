@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierApplication;
+using System.Diagnostics;
 
 namespace ClientGestionInformation
 {
@@ -88,6 +89,23 @@ namespace ClientGestionInformation
             if (test)
             {
                 MessageBox.Show(textAlert);
+            }
+            else
+            {
+                try
+                {
+                    Process p = new System.Diagnostics.Process();
+                    if (Process.GetProcessesByName("ClientDiffusion").GetUpperBound(0) != 0)
+                    {
+                        p.StartInfo.FileName = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\ClientDiffusion.exe";
+                        p.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                        p.Start();
+                    }
+                
+                }catch(Exception err)
+                {
+                    //Exeception a gerer.
+                }
             }
         }
 
