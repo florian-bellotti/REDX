@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace ClientDiffusion
 {
-    public partial class Form1 : Form
+    public partial class FormDiffusion : Form
     {
-        public Form1()
+        public FormDiffusion()
         {
             InitializeComponent();
+
+            //initialisation des composants du media player
             WMPLib.IWMPPlaylist playlist = mediaPlayer.newPlaylist("myPlaylist", string.Empty);
             string[] lines = System.IO.File.ReadAllLines(@"playlist.txt");
 
