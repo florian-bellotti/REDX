@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetierApplication", "Metier
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonneeApplication", "DonneeApplication\DonneeApplication.csproj", "{02F5F353-E38F-45F9-97B7-306A04076E30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientDiffusion", "ClientDiffusion\ClientDiffusion.csproj", "{1D0CB3A4-D952-467C-B239-21E59D43F522}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{02F5F353-E38F-45F9-97B7-306A04076E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02F5F353-E38F-45F9-97B7-306A04076E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02F5F353-E38F-45F9-97B7-306A04076E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0CB3A4-D952-467C-B239-21E59D43F522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0CB3A4-D952-467C-B239-21E59D43F522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0CB3A4-D952-467C-B239-21E59D43F522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0CB3A4-D952-467C-B239-21E59D43F522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
