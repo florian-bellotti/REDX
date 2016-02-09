@@ -13,26 +13,28 @@ using System.Diagnostics;
 
 namespace ClientGestionInformation
 {
-    public partial class Form1 : Form
+    public partial class FormGestionInformation : Form
     {
         private ObservablePerformance observablePerformance;
         private Thread t;
         private ProcessStartInfo progDif;
 
-        public Form1()
+        public FormGestionInformation()
         {
             InitializeComponent();
-
-
+            
             observablePerformance = new ObservablePerformance();
             observablePerformance.SomethingHappened += UpdateScreen;
 
             t = new Thread(new ThreadStart(observablePerformance.checkPerformance));
             t.Start();
-
         }
 
-
+        /// <summary>
+        /// Cette Methode permet de mettre a jour le Form de facon Safe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void UpdateScreen(object sender, EventArgs e)
         {
             if (this.textBoxRAM.InvokeRequired)
@@ -69,57 +71,63 @@ namespace ClientGestionInformation
             Alert();
         }
 
+        /// <summary>
+        /// Permet de générer une alerte en cas de performances insufisantes
+        /// et de lancer ou non l'application de diffusion
+        /// </summary>
         private void Alert()
         {
             string textAlert = "Vous avez des problèmes de : \n";
-            bool test = false;
+            bool erreur = false;
+
             if (Convert.ToDouble(textBoxCPU.Text) >= 85)
             {
                 textAlert += "  - CPU \n";
-                test = true;
+                erreur = true;
             }
             if (Convert.ToDouble(textBoxDisk.Text) >= 90)
             {
                 textAlert += "  - Disque \n";
-                test = true;
+                erreur = true;
             }
             if (Convert.ToDouble(textBoxRAM.Text) <= 50)
             {
                 textAlert += "  - RAM \n";
-                test = true;
+                erreur = true;
             }
-            if (test)
+
+            //s'il y a une erreur, ne pas lancer l'application et afficher une Popup
+            if (erreur)
             {
                 MessageBox.Show(textAlert);
             }
             else
             {
-                try
+                progDif = new ProcessStartInfo();
+                Process[] processlist = Process.GetProcesses();
+                bool processExist = false;
+
+                foreach (Process theprocess in processlist)
                 {
-                    progDif = new ProcessStartInfo();
-                    Process[] processlist = Process.GetProcesses();
-                    bool processExist = false;
-                    foreach (Process theprocess in processlist)
-                    {
-                        if (theprocess.ProcessName == "ClientDiffusion")
-                            processExist = true;
-
-                    }
-
-                    if (!processExist)
-                    {
-                        progDif.FileName = "ClientDiffusion.exe";
-                        progDif.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
-                        Process.Start(progDif);
-                    }                    
+                    if (theprocess.ProcessName == "ClientDiffusion")
+                    processExist = true;
                 }
-                 catch (Exception err)
-                 {
-                     //Exeception a gerer.
-                 }
+                    
+                if (!processExist)
+                {
+                    progDif.FileName = "ClientDiffusion.exe";
+                    progDif.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
+                    Process.Start(progDif);
+                }                  
+
             }
         }
 
+        /// <summary>
+        /// Permet d'arreter le thread lors de la fermeture de la fenetre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             t.Abort();

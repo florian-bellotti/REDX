@@ -1,6 +1,6 @@
 ﻿namespace ClientGestionInformation
 {
-    partial class Form1
+    partial class FormGestionInformation
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
