@@ -8,6 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Donnee;
 using Metier;
 using System.Globalization;
 
@@ -22,7 +23,6 @@ namespace Client
             InitializeComponent();
         }
 
-        //Lancement du timer au lancement du service
         protected override void OnStart(string[] args)
         {
             t = new Timer(5*60*1000);
@@ -30,27 +30,24 @@ namespace Client
             t.Start();
         }
 
-        //Arret du timer lors de l'arret du service
         protected override void OnStop()
         {
             t.Stop();
         }
 
-        //permet de récupérer les informations et de les inserer en base de données
         protected void serviceExec(object sender, EventArgs e)
         {
-            TrackPerformance trackPerformance = new TrackPerformance();
-            ObjectPerformance performance = new ObjectPerformance();
             MachineInformation machineInfo = new MachineInformation();
+            TrackPerformance trackPerformance = new TrackPerformance();
+
             machineInfo = trackPerformance.getAveragePerformance();
 
-            //convertion des "," en "." pour l'insertion des doubles dans la base de données
             string stringCPU = machineInfo.infoCPU.ToString(CultureInfo.InvariantCulture.NumberFormat);
             string stringRAM = machineInfo.infoRAM.ToString(CultureInfo.InvariantCulture.NumberFormat);
             string stringDisk = machineInfo.infoDisk.ToString(CultureInfo.InvariantCulture.NumberFormat);
 
-            //insertion dans la base de données
-            performance.insert(stringCPU, stringRAM, stringDisk);
+            MappageMachineInformation mapMachineInfo = new MappageMachineInformation();
+            mapMachineInfo.insert(stringCPU, stringRAM, stringDisk);
         }
     }
 }

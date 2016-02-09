@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CADClass.cs" />
-    <Compile Include="MappagePerformance.cs" />
+    <Compile Include="MachineInformation.cs" />
+    <Compile Include="MachinePerformance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
