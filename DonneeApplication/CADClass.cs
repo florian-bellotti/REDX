@@ -8,7 +8,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
-namespace Donnee
+namespace DonneeApplication
 {
     public class CADClass
     {
@@ -30,14 +30,17 @@ namespace Donnee
             this.data = new DataSet();
         }
 
-        //fonction pour requetes d'actions
-        public void ActionRows(string SQLRequest)
+        //fonction pour requetes de récupération de données
+        public DataSet getRows(string SQLRequest)
         {
-            this.data = new DataSet();
+            this.data.Clear();
             this.SQLRequest = SQLRequest;
             this.command = new SqlCommand(this.SQLRequest, this.connection);
+            this.connection.Open();
             this.dataAdaptater = new SqlDataAdapter(this.command);
             this.dataAdaptater.Fill(this.data, "rows");
+            connection.Close();
+            return this.data;
         }
     }
 }

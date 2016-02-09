@@ -8,23 +8,25 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Metier;
+using MetierApplication;
 
 namespace ClientGestionInformation
 {
     public partial class Form1 : Form
     {
-        public ThreadPerformance observable;
+        private ObservablePerformance observablePerformance;
+        private Thread t;
 
         public Form1()
         {
             InitializeComponent();
 
-            observable = new ThreadPerformance();
-            observable.SomethingHappened += UpdateScreen;
+            observablePerformance = new ObservablePerformance();
+            observablePerformance.SomethingHappened += UpdateScreen;
 
-            Thread t = new Thread(new ThreadStart(observable.run));
+            t = new Thread(new ThreadStart(observablePerformance.checkPerformance));
             t.Start();
+
         }
 
 
@@ -33,7 +35,7 @@ namespace ClientGestionInformation
             if (this.textBoxRAM.InvokeRequired)
             {
                 SetTextBoxRAMCallback d = new SetTextBoxRAMCallback(SetTextBoxRAM);
-                this.Invoke(d, new object[] { observable.getAllStates()[1] });
+                this.Invoke(d, new object[] { observablePerformance.getAllStates()[1] });
             }
             else
             {
@@ -43,7 +45,7 @@ namespace ClientGestionInformation
             if (this.textBoxCPU.InvokeRequired)
             {
                 SetTextBoxCPUCallback d = new SetTextBoxCPUCallback(SetTextBoxCPU);
-                this.Invoke(d, new object[] { observable.getAllStates()[0] });
+                this.Invoke(d, new object[] { observablePerformance.getAllStates()[0] });
             }
             else
             {
@@ -53,69 +55,18 @@ namespace ClientGestionInformation
             if (this.textBoxDisk.InvokeRequired)
             {
                 SetTextBoxDiskCallback d = new SetTextBoxDiskCallback(SetTextBoxDisk);
-                this.Invoke(d, new object[] { observable.getAllStates()[2] });
+                this.Invoke(d, new object[] { observablePerformance.getAllStates()[2] });
             }
             else
             {
                 this.textBoxDisk.Text = "(No Invoke)";
             }
         }
-    }
-}
 
-    public class ThreadPerformance
-    {
-        public event EventHandler SomethingHappened;
-        private string ram;
-        private string cpu;
-        private string disk;
-
-        public void run()
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MappageMachineInformation mapMachineInfo = new MappageMachineInformation();
-            DataSet data = new DataSet();
-            while (true)
-            {
-                data = mapMachineInfo.selectAll();
-                foreach (DataTable table in data.Tables)
-                {
-                    foreach (DataRow row in table.Rows)
-                    {
-                        foreach (DataColumn column in table.Columns)
-                        {
-                            switch (column.ToString())
-                            {
-                                case "RAM":
-                                    ram = row[column].ToString();
-                                    break;
-                                case "CPU":
-                                    cpu = row[column].ToString();
-                                    break;
-                                case "Disk":
-                                    disk = row[column].ToString();
-                                    break;
-                            }
-                        }
-                    }
-                }
-
-                EventHandler handler = SomethingHappened;
-                if (handler != null)
-                {
-                    handler(this, EventArgs.Empty);
-                }
-
-                Thread.Sleep(1*60*1000);
-            }
+            t.Abort();
+            t.Join();
         }
-
-    public string[] getAllStates()
-    {
-        string[] tab = new string[3];
-        tab[0] = cpu;
-        tab[1] = ram;
-        tab[2] = disk;
-        return tab;
     }
 }
-
