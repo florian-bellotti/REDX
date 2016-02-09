@@ -61,6 +61,34 @@ namespace ClientGestionInformation
             {
                 this.textBoxDisk.Text = "(No Invoke)";
             }
+
+           
+            Alert();
+        }
+
+        private void Alert()
+        {
+            string textAlert = "Vous avez des problèmes de : \n";
+            bool test = false;
+            if (Convert.ToDouble(textBoxCPU.Text) >= 85)
+            {
+                textAlert += "  - CPU \n";
+                test = true;
+            }
+            if (Convert.ToDouble(textBoxDisk.Text) >= 90)
+            {
+                textAlert += "  - Disque \n";
+                test = true;
+            }
+            if (Convert.ToDouble(textBoxRAM.Text) <= 50)
+            {
+                textAlert += "  - RAM \n";
+                test = true;
+            }
+            if (test)
+            {
+                MessageBox.Show(textAlert);
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
