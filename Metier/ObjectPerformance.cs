@@ -8,22 +8,24 @@ using System.Data;
 
 namespace Metier
 {
-    public class MappageMachineInformation
+    //cette classe permet la gestion dans la base de donnée de la table Performance
+    public class ObjectPerformance
     {
         private CADClass cad;
         private DataSet data;
+        private MappagePerformance mapPerformance;
 
-        public MappageMachineInformation()
+        public ObjectPerformance()
         {
             cad = new CADClass();
             data = new DataSet();
+            mapPerformance = new MappagePerformance();
         }
 
+        //permet l'execution de la requete d'insert
         public void insert(string CPU, string RAM, string Disk)
         {
-            DateTime Date = DateTime.Now;
-            string SQLRequest = "INSERT INTO Performance([CPU], [RAM], [Disk], [Date], [Id_Machine]) VALUES('" + CPU + "', '" + RAM + "', '" + Disk + "', '" + Date + "', (Select Id_machine from Machine where Name_machine = '" + Environment.MachineName + "')); ";
-            cad = new CADClass();
+            string SQLRequest = mapPerformance.insert(CPU, RAM, Disk);
             cad.ActionRows(SQLRequest);
         }
     }
