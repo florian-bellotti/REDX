@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierApplication;
+using System.Diagnostics;
 
 namespace ClientGestionInformation
 {
@@ -16,10 +17,12 @@ namespace ClientGestionInformation
     {
         private ObservablePerformance observablePerformance;
         private Thread t;
+        private ProcessStartInfo progDif;
 
         public Form1()
         {
             InitializeComponent();
+
 
             observablePerformance = new ObservablePerformance();
             observablePerformance.SomethingHappened += UpdateScreen;
@@ -88,6 +91,32 @@ namespace ClientGestionInformation
             if (test)
             {
                 MessageBox.Show(textAlert);
+            }
+            else
+            {
+                try
+                {
+                    progDif = new ProcessStartInfo();
+                    Process[] processlist = Process.GetProcesses();
+                    bool processExist = false;
+                    foreach (Process theprocess in processlist)
+                    {
+                        if (theprocess.ProcessName == "ClientDiffusion")
+                            processExist = true;
+
+                    }
+
+                    if (!processExist)
+                    {
+                        progDif.FileName = "ClientDiffusion.exe";
+                        progDif.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
+                        Process.Start(progDif);
+                    }                    
+                }
+                 catch (Exception err)
+                 {
+                     //Exeception a gerer.
+                 }
             }
         }
 
