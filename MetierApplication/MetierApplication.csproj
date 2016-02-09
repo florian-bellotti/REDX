@@ -44,6 +44,12 @@
     <Compile Include="ObservablePerformance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Donnee\Donnee.csproj">
+      <Project>{7981e3e5-59ff-412b-aa67-cbc31d7ad547}</Project>
+      <Name>Donnee</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
