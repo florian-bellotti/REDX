@@ -24,6 +24,17 @@ namespace ClientGestionInformation
 
             observablePerformance = new ObservablePerformance();
             observablePerformance.SomethingHappened += UpdateScreen;
+            /*Process p = new System.Diagnostics.Process();
+            if (Process.GetProcessesByName("ClientDiffusion").GetUpperBound(0) != 0)
+            {
+                p.StartInfo.FileName = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\ClientDiffusion.exe";
+                p.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                p.Start();
+            }*/
+            ProcessStartInfo progDif =new ProcessStartInfo();
+            progDif.FileName = "ClientDiffusion.exe";
+            progDif.WorkingDirectory = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\";
+            Process.Start(progDif);
 
             t = new Thread(new ThreadStart(observablePerformance.checkPerformance));
             t.Start();
