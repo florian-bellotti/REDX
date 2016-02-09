@@ -22,7 +22,7 @@ namespace Donnee
         //constructeur
         public CADClass()
         {
-            this.cnx = "Data Source=10.10.100.1;Initial Catalog=REDX;User ID=sa;Password=Exia123;MultipleActiveResultSets=True";
+            this.cnx = "Data source=(localdb)\\ProjectsV13;Database=ProjetREDX;integrated security=true";
             this.SQLRequest = null;
             this.connection = new SqlConnection(this.cnx);
             this.dataAdaptater = null;
@@ -35,9 +35,11 @@ namespace Donnee
         {
             this.data = new DataSet();
             this.SQLRequest = SQLRequest;
+            this.connection.Open();
             this.command = new SqlCommand(this.SQLRequest, this.connection);
             this.dataAdaptater = new SqlDataAdapter(this.command);
             this.dataAdaptater.Fill(this.data, "rows");
+            connection.Close();
         }
 
         //fonction pour requetes de récupération de données

@@ -11,12 +11,12 @@ namespace Donnee
         public string insert(string CPU, string RAM, string Disk)
         {
             DateTime Date = DateTime.Now;
-            return "INSERT INTO MachineInformation([CPU], [RAM], [Disk], [Date], [Id_Machine]) VALUES('" +  CPU + "', '" + RAM + "', '" + Disk + "', '" + Date + "', '1'); ";
+            return "INSERT INTO MachineInformation([CPU], [RAM], [disque], [Date], [Id_Machine]) VALUES('" +  CPU + "', '" + RAM + "', '" + Disk + "', '" + Date + "', '1'); ";
         }
 
         public string selectAll()
         {
-            return "SELECT CPU, RAM, Disk from MachineInformation ORDER BY Date Desc LIMIT 1";
+            return "SELECT CPU, RAM, disque from MachineInformation ORDER BY Date Desc LIMIT 1";
         }
     }
 }
