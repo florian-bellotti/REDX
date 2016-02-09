@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Diagnostics;
 using System.Collections.Generic;
-using Donnee;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using Donnee;
 
 namespace Metier
 {

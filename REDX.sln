@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metier", "ConsoleApplicatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donnee", "CAD\Donnee.csproj", "{B5762DA9-BEC0-4454-BAEC-51AF812E7996}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDiffusion", "AppDiffusion\AppDiffusion.csproj", "{305FDC70-4D80-46D6-BECD-3F4E0A3E855F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B5762DA9-BEC0-4454-BAEC-51AF812E7996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5762DA9-BEC0-4454-BAEC-51AF812E7996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5762DA9-BEC0-4454-BAEC-51AF812E7996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305FDC70-4D80-46D6-BECD-3F4E0A3E855F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305FDC70-4D80-46D6-BECD-3F4E0A3E855F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305FDC70-4D80-46D6-BECD-3F4E0A3E855F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305FDC70-4D80-46D6-BECD-3F4E0A3E855F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
