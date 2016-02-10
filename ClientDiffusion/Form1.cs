@@ -7,16 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Kinect;
+using Microsoft.Kinect.Tools;   
 
 namespace ClientDiffusion
 {
     public partial class Form1 : Form
     {
+        private KinectSensor ks = null;
         public Form1()
         {
             InitializeComponent();
             WMPLib.IWMPPlaylist playlist = mediaPlayer.newPlaylist("myPlaylist", string.Empty);
             string[] lines = System.IO.File.ReadAllLines(@"playlist.txt");
+            
+
 
             foreach (string path in lines)
             {
@@ -30,6 +35,13 @@ namespace ClientDiffusion
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Height = 1032;
             this.Width = 1632;
+
+            /*foreach(var potentialSensor in ks.)
+            {
+
+            }*/
+            this.ks = KinectSensor.GetDefault();
+            this.ks.Open();
         }
 
         private void mediaPlayer_Enter(object sender, EventArgs e)

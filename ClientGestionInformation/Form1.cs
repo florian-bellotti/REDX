@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MetierApplication;
 using System.Diagnostics;
 
+
 namespace ClientGestionInformation
 {
     public partial class Form1 : Form
@@ -23,18 +24,7 @@ namespace ClientGestionInformation
             InitializeComponent();
 
             observablePerformance = new ObservablePerformance();
-            observablePerformance.SomethingHappened += UpdateScreen;
-            /*Process p = new System.Diagnostics.Process();
-            if (Process.GetProcessesByName("ClientDiffusion").GetUpperBound(0) != 0)
-            {
-                p.StartInfo.FileName = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\ClientDiffusion.exe";
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                p.Start();
-            }*/
-            ProcessStartInfo progDif =new ProcessStartInfo();
-            progDif.FileName = "ClientDiffusion.exe";
-            progDif.WorkingDirectory = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\";
-            Process.Start(progDif);
+            observablePerformance.SomethingHappened += UpdateScreen;           
 
             t = new Thread(new ThreadStart(observablePerformance.checkPerformance));
             t.Start();
@@ -105,15 +95,16 @@ namespace ClientGestionInformation
             {
                 try
                 {
-                    Process p = new System.Diagnostics.Process();
-                    if (Process.GetProcessesByName("ClientDiffusion").GetUpperBound(0) != 0)
+                    if (Process.GetProcessesByName("ClientDiffusion").Length != 0)
                     {
-                        p.StartInfo.FileName = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\ClientDiffusion.exe";
-                        p.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                        p.Start();
+                        ProcessStartInfo progDif = new ProcessStartInfo();
+                        progDif.FileName = "ClientDiffusion.exe";
+                        progDif.WorkingDirectory = @"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\";
+                        Process.Start(progDif);
                     }
-                
-                }catch(Exception err)
+
+                }
+                catch(Exception err)
                 {
                     //Exeception a gerer.
                 }
