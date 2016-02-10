@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Metier
 {
     /// <summary>
-    /// Cette classe permet de faire des calculs
+    /// Cette classe permet de faire des calculs 
     /// </summary>
     public class Calculate
     {
