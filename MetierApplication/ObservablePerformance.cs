@@ -8,31 +8,37 @@ using System.Threading.Tasks;
 
 namespace MetierApplication
 {
+    /// <summary>
+    /// Cette classe Observe les performances en base de données
+    /// </summary>
     public class ObservablePerformance
     {
         public event EventHandler SomethingHappened;
         private DataSet data;
-        private MappagePerformance mapPerformance;
+        private ObjectPerformance objectPerformance;
         private string cpu;
         private string ram;
         private string disk;
 
         public ObservablePerformance()
         {
-            this.mapPerformance = new MappagePerformance();
+            this.objectPerformance = new ObjectPerformance();
             this.cpu = "";
             this.ram = "";
             this.disk = "";
             this.data = new DataSet();
         }
-        
+
+        /// <summary>
+        /// Permet de savoir s'il y a eu des modifications dans la base de données
+        /// </summary>
         public void checkPerformance()
         {
-            DataSet data = this.mapPerformance.selectAll();
+            DataSet data = this.objectPerformance.selectLast();
             while (true)
             {
                 bool boolTest = false; 
-                data = mapPerformance.selectAll();
+                data = objectPerformance.selectLast();
                 foreach (DataTable table in data.Tables)
                 {
                     foreach (DataRow row in table.Rows)

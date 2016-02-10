@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MappagePerformance.cs" />
+    <Compile Include="ObjectPerformance.cs" />
     <Compile Include="ObservablePerformance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DonneeApplication\DonneeApplication.csproj">
-      <Project>{02f5f353-e38f-45f9-97b7-306a04076e30}</Project>
-      <Name>DonneeApplication</Name>
+    <ProjectReference Include="..\Donnee\Donnee.csproj">
+      <Project>{7981e3e5-59ff-412b-aa67-cbc31d7ad547}</Project>
+      <Name>Donnee</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

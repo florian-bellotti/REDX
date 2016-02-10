@@ -47,8 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CADClass.cs" />
-    <Compile Include="MachineInformation.cs" />
-    <Compile Include="MachinePerformance.cs" />
+    <Compile Include="MappagePerformance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
