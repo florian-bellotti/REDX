@@ -103,6 +103,12 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetierDiffusion\MetierDiffusion.csproj">
+      <Project>{a20d28bd-a0ea-453b-83b9-f19ef3078b03}</Project>
+      <Name>MetierDiffusion</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

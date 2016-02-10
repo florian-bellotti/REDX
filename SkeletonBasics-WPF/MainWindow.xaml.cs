@@ -105,38 +105,38 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             lecteur = new SoundPlayer(@"C:\Users\Kazadri\Source\Repos\REDX\SkeletonBasics-WPF\Tetoma.wav");
         }
 
-        static void GestureRight_GestureRecognized(object sender, EventArgs e)
-        {
-            if(!gestureRightAlreadyDisplay)
+            static void GestureRight_GestureRecognized(object sender, EventArgs e)
             {
-                gestureRightAlreadyDisplay = true;
-                if(!musicIsPlaying)
+                if(!gestureRightAlreadyDisplay)
                 {
-                    lecteur.Play();
-                    Thread.Sleep(2000);
-                    //MessageBox.Show("Gesture droite reconnue");
-                    gestureRightAlreadyDisplay = false;
-                    musicIsPlaying = true;
-                }
+                    gestureRightAlreadyDisplay = true;
+                    if(!musicIsPlaying)
+                    {
+                        lecteur.Play();
+                        Thread.Sleep(2000);
+                        //MessageBox.Show("Gesture droite reconnue");
+                        gestureRightAlreadyDisplay = false;
+                        musicIsPlaying = true;
+                    }
                
+                }
             }
-        }
-        static void GestureLeft_GestureRecognized(object sender, EventArgs e)
-        {
-            if (!gestureLeftAlreadyDisplay)
+            static void GestureLeft_GestureRecognized(object sender, EventArgs e)
             {
-                gestureLeftAlreadyDisplay = true;
-                if (musicIsPlaying)
-                { 
-                    lecteur.Stop();
-                    Thread.Sleep(2000);
-                    musicIsPlaying = false;
-                    //MessageBox.Show("Gesture gauche reconnue");
-                    gestureLeftAlreadyDisplay = false;
-                }
+                if (!gestureLeftAlreadyDisplay)
+                {
+                    gestureLeftAlreadyDisplay = true;
+                    if (musicIsPlaying)
+                    { 
+                        lecteur.Stop();
+                        Thread.Sleep(2000);
+                        musicIsPlaying = false;
+                        //MessageBox.Show("Gesture gauche reconnue");
+                        gestureLeftAlreadyDisplay = false;
+                    }
                
+                }
             }
-        }
 
         /// <summary>
         /// Draws indicators to show which edges are clipping skeleton data
