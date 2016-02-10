@@ -19,12 +19,12 @@ namespace ClientDiffusion
 {
     public partial class FormDiffusion : Form
     {
-        static MoveRightGesture _gestureRight = new MoveRightGesture();
-        static MoveLeftGesture _gestureLeft = new MoveLeftGesture();
-        static Boolean musicIsPlaying = false;
+        static MoveRightGesture _gestureRight;
+        static MoveLeftGesture _gestureLeft;
+        static Boolean musicIsPlaying;
         static SoundPlayer lecteur;
-        static Boolean gestureRightAlreadyDisplay = false;
-        static Boolean gestureLeftAlreadyDisplay = false;
+        static Boolean gestureRightAlreadyDisplay;
+        static Boolean gestureLeftAlreadyDisplay;
 
         private KinectSensor sensor;
 
@@ -57,6 +57,11 @@ namespace ClientDiffusion
 
         private void initialyzeKinect()
         {
+            _gestureRight = new MoveRightGesture();
+            _gestureLeft = new MoveLeftGesture();
+            musicIsPlaying = false;
+            gestureRightAlreadyDisplay = false;
+            gestureLeftAlreadyDisplay = false;
             foreach (var potentialSensor in KinectSensor.KinectSensors)
             {
                 if (potentialSensor.Status == KinectStatus.Connected)
