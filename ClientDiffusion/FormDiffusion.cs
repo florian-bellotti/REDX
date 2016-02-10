@@ -31,7 +31,7 @@ namespace ClientDiffusion
         public FormDiffusion()
         {
             InitializeComponent();
-
+            initialyzeKinect();
             //initialisation des composants du media player
             WMPLib.IWMPPlaylist playlist = mediaPlayer.newPlaylist("myPlaylist", string.Empty);
             string[] lines = System.IO.File.ReadAllLines(@"playlist.txt");
@@ -46,15 +46,25 @@ namespace ClientDiffusion
             mediaPlayer.settings.autoStart = true;
             _gestureRight.GestureRecognized += GestureRight_GestureRecognized;
             _gestureLeft.GestureRecognized += GestureLeft_GestureRecognized;
-            lecteur = new SoundPlayer(@"C:\Users\Kazadri\Source\Repos\REDX\SkeletonBasics-WPF\Tetoma.wav");
+            lecteur = new SoundPlayer(@"C:\Users\Kazadri\Source\Repos\REDX\ClientDiffusion\bin\Release\musique.wav");
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Height = 1032;
             this.Width = 1632;
+            lecteur.Play();
+            musicIsPlaying = true;
         }
 
         private void initialyzeKinect()
         {
+            foreach (var potentialSensor in KinectSensor.KinectSensors)
+            {
+                if (potentialSensor.Status == KinectStatus.Connected)
+                {
+                    this.sensor = potentialSensor;
+                    break;
+                }
+            }
             if (null != this.sensor)
             {
                 // Turn on the skeleton stream to receive skeleton frames
@@ -115,6 +125,7 @@ namespace ClientDiffusion
                 if (!musicIsPlaying)
                 {
                     lecteur.Play();
+                    mediaPlayer.Ctlcontrols.play();
                     Thread.Sleep(2000);
                     //MessageBox.Show("Gesture droite reconnue");
                     gestureRightAlreadyDisplay = false;
@@ -131,6 +142,7 @@ namespace ClientDiffusion
                 if (musicIsPlaying)
                 {
                     lecteur.Stop();
+                    mediaPlayer.Ctlcontrols.stop();
                     Thread.Sleep(2000);
                     musicIsPlaying = false;
                     //MessageBox.Show("Gesture gauche reconnue");

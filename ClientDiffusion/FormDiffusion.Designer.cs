@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffusion));
-            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
+            mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(mediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // mediaPlayer
             // 
-            this.mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mediaPlayer.Enabled = true;
-            this.mediaPlayer.Location = new System.Drawing.Point(0, 0);
-            this.mediaPlayer.Name = "mediaPlayer";
-            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(563, 188);
-            this.mediaPlayer.TabIndex = 0;
+            mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            mediaPlayer.Enabled = true;
+            mediaPlayer.Location = new System.Drawing.Point(0, 0);
+            mediaPlayer.Name = "mediaPlayer";
+            mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
+            mediaPlayer.Size = new System.Drawing.Size(563, 188);
+            mediaPlayer.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 188);
-            this.Controls.Add(this.mediaPlayer);
+            this.Controls.Add(mediaPlayer);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(mediaPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        static AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
     }
 }
 
