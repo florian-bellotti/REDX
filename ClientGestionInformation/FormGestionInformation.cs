@@ -17,7 +17,7 @@ namespace ClientGestionInformation
     {
         private ObservablePerformance observablePerformance;
         private Thread t;
-        private ProcessStartInfo progDif;
+        private ProcessStartInfo processDiffusion;
 
         public FormGestionInformation()
         {
@@ -103,7 +103,7 @@ namespace ClientGestionInformation
             }
             else
             {
-                progDif = new ProcessStartInfo();
+                processDiffusion = new ProcessStartInfo();
                 Process[] processlist = Process.GetProcesses();
                 bool processExist = false;
 
@@ -115,9 +115,9 @@ namespace ClientGestionInformation
                     
                 if (!processExist)
                 {
-                    progDif.FileName = "ClientDiffusion.exe";
-                    progDif.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
-                    Process.Start(progDif);
+                    processDiffusion.FileName = "ClientDiffusion.exe";
+                    processDiffusion.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
+                    Process.Start(processDiffusion);
                 }                  
 
             }

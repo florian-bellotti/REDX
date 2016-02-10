@@ -14,7 +14,7 @@ namespace Metier
     /// </summary>
     public class TrackPerformance
     {
-        public MachineInformation machineInfo;
+        private MachineInformation machineInfo;
         private Calculate calculate;
         private List<double> listInfoDisk;
         private List<double> listInfoRAM;
