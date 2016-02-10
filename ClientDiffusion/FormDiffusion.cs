@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Kinect;
 
 namespace ClientDiffusion
 {
     public partial class FormDiffusion : Form
     {
+        public KinectSensor sensor = null;
+        //static MoveRightGesture _gesture = new MoveRightGesture();
         public FormDiffusion()
         {
             InitializeComponent();
