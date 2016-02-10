@@ -25,7 +25,7 @@ namespace Donnee
         //constructeur
         public CADClass()
         {
-            this.cnx = "Data Source=10.10.100.1;Initial Catalog=REDX;User ID=sa;Password=Exia123;MultipleActiveResultSets=True";
+            this.cnx = "Data Source=192.168.159.139;Initial Catalog=REDX;User ID=sa;Password=Exia123;MultipleActiveResultSets=True";
             this.SQLRequest = null;
             this.connection = new SqlConnection(this.cnx);
             this.dataAdaptater = null;

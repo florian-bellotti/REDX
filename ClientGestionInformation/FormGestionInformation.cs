@@ -19,6 +19,7 @@ namespace ClientGestionInformation
         private ObservablePerformance observablePerformance;
         private Thread t;
         private ProcessStartInfo processDiffusion;
+        private Process myProcess;
 
         public FormGestionInformation()
         {
@@ -117,8 +118,8 @@ namespace ClientGestionInformation
                 if (!processExist)
                 {
                     processDiffusion.FileName = "ClientDiffusion.exe";
-                    processDiffusion.WorkingDirectory = @"C:\Users\Florian\Documents\Visual Studio 2015\Projects\REDX\ClientDiffusion\bin\release";
-                    Process.Start(processDiffusion);
+                    processDiffusion.WorkingDirectory = @"C:\Users\Quentin\Source\Repos\REDX\ClientDiffusion\bin\release";
+                    myProcess = Process.Start(processDiffusion);
                 }                  
 
             }
@@ -131,6 +132,7 @@ namespace ClientGestionInformation
         /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            myProcess.Kill();
             t.Abort();
             t.Join();
         }

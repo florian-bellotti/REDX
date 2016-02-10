@@ -38,19 +38,21 @@
             this.mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mediaPlayer.Enabled = true;
             this.mediaPlayer.Location = new System.Drawing.Point(0, 0);
+            this.mediaPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mediaPlayer.Name = "mediaPlayer";
             this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(563, 188);
+            this.mediaPlayer.Size = new System.Drawing.Size(751, 231);
             this.mediaPlayer.TabIndex = 0;
             // 
-            // Form1
+            // FormDiffusion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 188);
+            this.ClientSize = new System.Drawing.Size(751, 231);
             this.Controls.Add(this.mediaPlayer);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FormDiffusion";
+            this.Text = "AppDiffusion";
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.ResumeLayout(false);
 

@@ -17,17 +17,18 @@ namespace Clients
 
         static void Main(string[] args)
         {
-            MachineInformation machineInfo = new MachineInformation();
             TrackPerformance trackPerformance = new TrackPerformance();
-
+            ObjectPerformance performance = new ObjectPerformance();
+            MachineInformation machineInfo = new MachineInformation();
             machineInfo = trackPerformance.getAveragePerformance();
 
+            //convertion des "," en "." pour l'insertion des doubles dans la base de données
             string stringCPU = machineInfo.infoCPU.ToString(CultureInfo.InvariantCulture.NumberFormat);
             string stringRAM = machineInfo.infoRAM.ToString(CultureInfo.InvariantCulture.NumberFormat);
             string stringDisk = machineInfo.infoDisk.ToString(CultureInfo.InvariantCulture.NumberFormat);
 
-            MappageMachineInformation mapMachineInfo = new MappageMachineInformation();
-            mapMachineInfo.insert(stringCPU, stringRAM, stringDisk);
+            //insertion dans la base de données
+            performance.insert(stringCPU, stringRAM, stringDisk);
         }
     }
 }
