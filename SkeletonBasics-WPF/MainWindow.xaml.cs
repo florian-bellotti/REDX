@@ -10,12 +10,22 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
     using System.Windows;
     using System.Windows.Media;
     using Microsoft.Kinect;
+    using MetierDiffusion;
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Media;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        static MoveRightGesture _gestureRight = new MoveRightGesture();
+        static MoveLeftGesture _gestureLeft = new MoveLeftGesture();
+        static Boolean musicIsPlaying = false;
+        static SoundPlayer lecteur;
         /// <summary>
         /// Width of output drawing
         /// </summary>
@@ -81,12 +91,51 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         /// </summary>
         private DrawingImage imageSource;
 
+
+        static Boolean gestureRightAlreadyDisplay = false;
+        static Boolean gestureLeftAlreadyDisplay = false;
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
+            _gestureRight.GestureRecognized += GestureRight_GestureRecognized;
+            _gestureLeft.GestureRecognized += GestureLeft_GestureRecognized;
+            lecteur = new SoundPlayer(@"C:\Users\Kazadri\Source\Repos\REDX\SkeletonBasics-WPF\Tetoma.wav");
+        }
+
+        static void GestureRight_GestureRecognized(object sender, EventArgs e)
+        {
+            if(!gestureRightAlreadyDisplay)
+            {
+                gestureRightAlreadyDisplay = true;
+                if(!musicIsPlaying)
+                {
+                    lecteur.Play();
+                    Thread.Sleep(2000);
+                    //MessageBox.Show("Gesture droite reconnue");
+                    gestureRightAlreadyDisplay = false;
+                    musicIsPlaying = true;
+                }
+               
+            }
+        }
+        static void GestureLeft_GestureRecognized(object sender, EventArgs e)
+        {
+            if (!gestureLeftAlreadyDisplay)
+            {
+                gestureLeftAlreadyDisplay = true;
+                if (musicIsPlaying)
+                { 
+                    lecteur.Stop();
+                    Thread.Sleep(2000);
+                    musicIsPlaying = false;
+                    //MessageBox.Show("Gesture gauche reconnue");
+                    gestureLeftAlreadyDisplay = false;
+                }
+               
+            }
         }
 
         /// <summary>
@@ -211,7 +260,16 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                 {
                     skeletons = new Skeleton[skeletonFrame.SkeletonArrayLength];
                     skeletonFrame.CopySkeletonDataTo(skeletons);
-                    
+                    if (skeletons.Length > 0)
+                    {
+                        var user = skeletons.Where(u => u.TrackingState == SkeletonTrackingState.Tracked).FirstOrDefault();
+
+                        if (user != null)
+                        {
+                            _gestureRight.Update(user);
+                            _gestureLeft.Update(user);
+                        }
+                    }
                 }
             }
 
